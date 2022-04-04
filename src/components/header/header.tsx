@@ -29,18 +29,18 @@ export const Header = () => {
           }}>
           <div className={styles.active}>
             {!teacher ? (
-              <div className={active ? styles.account : styles.selected}>
+              <div className={!active ? styles.account : styles.selected}>
                 teacher@school.org
               </div>
             ) : (
-              <div className={active ? styles.account : styles.selected}>
+              <div className={!active ? styles.account : styles.selected}>
                 student@school.org
               </div>
             )}
-            {active ? <Arrow /> : <ArrowUp />}
+            {!active ? <Arrow /> : <ArrowUp />}
           </div>
         </div>
-        {!active && (
+        {active && (
           <div className={styles.dropdown}>
             {!teacher ? (
               <div
