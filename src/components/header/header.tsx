@@ -47,6 +47,7 @@ export const Header = () => {
                 className={styles.email}
                 onClick={() => {
                   setTeacher(!teacher);
+                  setActive(!active);
                 }}>
                 student@school.org
               </div>
@@ -55,6 +56,7 @@ export const Header = () => {
                 className={styles.email}
                 onClick={() => {
                   setTeacher(!teacher);
+                  setActive(!active);
                 }}>
                 teacher@school.org
               </div>
