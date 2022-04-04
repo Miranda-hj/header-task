@@ -6,15 +6,21 @@ import styles from "./header.module.scss";
 
 export const Header = () => {
   const [active, setActive] = useState(false);
-  const [student, setStudent] = useState(false);
+  const [teacher, setTeacher] = useState(false);
   return (
     <>
       <div className={styles.header}>
         <div className={styles.menu}>
           <Icon className={styles.icon} />
           <div className={styles.classes}>Classes</div>
-          <div className={styles.tab}>Lessons</div>
-          <div className={styles.tab}>Libraries</div>
+          {!teacher ? (
+            <>
+              <div className={styles.tab}>Lessons</div>
+              <div className={styles.tab}>Libraries</div>
+            </>
+          ) : (
+            <div className={styles.tab}>Assignments</div>
+          )}
         </div>
         <div
           className={styles.setting}
@@ -22,25 +28,41 @@ export const Header = () => {
             setActive(!active);
           }}>
           <div className={styles.active}>
-            <div className={active ? styles.account : styles.selected}>
-              teacher@school.org
-            </div>
+            {!teacher ? (
+              <div className={active ? styles.account : styles.selected}>
+                teacher@school.org
+              </div>
+            ) : (
+              <div className={active ? styles.account : styles.selected}>
+                student@school.org
+              </div>
+            )}
             {active ? <Arrow /> : <ArrowUp />}
           </div>
-          {!active && (
-            <div className={styles.dropdown}>
+        </div>
+        {!active && (
+          <div className={styles.dropdown}>
+            {!teacher ? (
               <div
                 className={styles.email}
                 onClick={() => {
-                  setStudent(!active);
+                  setTeacher(!teacher);
                 }}>
                 student@school.org
               </div>
-              <div className={styles.settings}>Settings</div>
-              <div className={styles.signOut}>Sign Out</div>
-            </div>
-          )}
-        </div>
+            ) : (
+              <div
+                className={styles.email}
+                onClick={() => {
+                  setTeacher(!teacher);
+                }}>
+                teacher@school.org
+              </div>
+            )}
+            <div className={styles.settings}>Settings</div>
+            <div className={styles.signOut}>Sign Out</div>
+          </div>
+        )}
       </div>
     </>
   );

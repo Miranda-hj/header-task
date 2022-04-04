@@ -1,11 +1,12 @@
-export const Icon = (props{fill?: string}) => {
+export const Icon = (props: { className?: string }) => {
   return (
     <svg
       width="20"
       height="20"
       viewBox="0 0 20 20"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+      className={props.className}>
       <g id="logo">
         <path
           id="Shape"
